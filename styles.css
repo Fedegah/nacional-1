@@ -1,0 +1,998 @@
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --orange-primary: #ff8c00;
+    --orange-light: #ffa500;
+    --orange-dark: #e67e00;
+    --brown-dark: #3d2314;
+    --brown-medium: #5c3a24;
+    --white: #ffffff;
+    --gray-light: #f5f5f5;
+    --gray-medium: #999999;
+    --gray-dark: #666666;
+    --whatsapp-green: #25d366;
+    --whatsapp-green-dark: #1fb855;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-base: 17px;
+    --font-size-small: 14px;
+    --font-size-large: 20px;
+    --font-size-xl: 26px;
+    --font-size-2xl: 38px;
+
+    /* Spacing */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-2xl: 64px;
+
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.25);
+
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+html {
+    font-size: var(--font-size-base);
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--gray-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   LANDING PAGE STYLES
+   ============================================ */
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+    background: linear-gradient(180deg, #ff6600 0%, #ff8800 15%, #cc5500 40%, #994400 65%, #331100 90%, #000000 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotate 30s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Welcome Card */
+.welcome-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    max-width: 480px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    z-index: 1;
+    animation: fadeInUp 0.6s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Icon */
+.icon-wrapper {
+    margin-bottom: var(--spacing-lg);
+    animation: bounceIn 0.8s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.education-icon {
+    width: 100px;
+    height: 100px;
+    filter: drop-shadow(0 6px 16px rgba(255, 140, 0, 0.4));
+    transition: transform var(--transition-normal);
+    border-radius: 50%;
+}
+
+.education-icon:hover {
+    transform: scale(1.08) rotate(-3deg);
+}
+
+/* Typography */
+.welcome-title {
+    font-size: var(--font-size-2xl);
+    font-weight: 800;
+    color: var(--orange-primary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.1;
+    text-shadow: 0 2px 4px rgba(255, 140, 0, 0.15);
+    letter-spacing: -0.5px;
+}
+
+.welcome-text {
+    font-size: var(--font-size-large);
+    color: #6b6b6b;
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.65;
+    font-weight: 400;
+}
+
+/* CTA Button */
+.cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--orange-primary);
+    color: var(--white);
+    font-size: var(--font-size-large);
+    font-weight: 700;
+    padding: 18px 36px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.3px;
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.cta-button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    position: relative;
+    z-index: 1;
+}
+
+/* Privacy Notice */
+.privacy-notice {
+    font-size: var(--font-size-small);
+    color: #b8b8b8;
+    margin-top: var(--spacing-lg);
+    line-height: 1.5;
+}
+
+.privacy-link {
+    color: var(--orange-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.privacy-link:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-button {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--whatsapp-green);
+    color: var(--white);
+    padding: 14px 24px;
+    border-radius: var(--radius-full);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+    z-index: 1000;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+    }
+
+    50% {
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+    }
+}
+
+.whatsapp-button:hover {
+    background: var(--whatsapp-green-dark);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl);
+    animation: none;
+}
+
+.whatsapp-text {
+    font-weight: 600;
+    font-size: var(--font-size-base);
+}
+
+.online-indicator {
+    width: 10px;
+    height: 10px;
+    background: var(--white);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+/* ============================================
+   CHAT MODAL STYLES
+   ============================================ */
+
+/* Modal Overlay */
+.chat-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.chat-modal.active {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 24px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Modal Content */
+.chat-modal-content {
+    background: var(--white);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideUp 0.3s ease;
+    margin-bottom: 90px;
+    margin-right: 0;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal Header */
+.chat-modal-header {
+    background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.chat-modal-attendant {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.attendant-photo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    object-fit: cover;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.attendant-info h3 {
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.attendant-info p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 13px;
+    margin: 2px 0 0 0;
+    line-height: 1.2;
+}
+
+.close-modal {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background var(--transition-fast);
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Modal Body */
+.chat-modal-body {
+    padding: 24px;
+    min-height: 120px;
+    background: #E5DDD5;
+    position: relative;
+}
+
+.chat-modal-body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h100v100H0z' fill='%23E5DDD5'/%3E%3Cpath d='M20 20l5 5-5 5m30-10l5 5-5 5' stroke='%23D1C8BE' stroke-width='0.5' fill='none' opacity='0.3'/%3E%3C/svg%3E");
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.chat-message {
+    background: var(--white);
+    padding: 12px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    max-width: 85%;
+}
+
+.chat-message::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 12px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 8px 0;
+    border-color: transparent var(--white) transparent transparent;
+}
+
+.chat-message p {
+    margin: 0;
+    font-size: 15px;
+    color: var(--gray-dark);
+    line-height: 1.4;
+}
+
+/* Modal Footer */
+.chat-modal-footer {
+    padding: 20px;
+    background: var(--white);
+}
+
+.chat-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--whatsapp-green);
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    padding: 14px 24px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.chat-button:hover {
+    background: var(--whatsapp-green-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+}
+
+.chat-button:active {
+    transform: translateY(0);
+}
+
+/* ============================================
+   PRIVACY POLICY PAGE STYLES
+   ============================================ */
+
+.privacy-page {
+    background: var(--gray-light);
+}
+
+/* Breadcrumb */
+.breadcrumb {
+    background: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.breadcrumb ol {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    font-size: var(--font-size-small);
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '›';
+    margin-left: var(--spacing-xs);
+    color: var(--gray-medium);
+    font-size: 18px;
+}
+
+.breadcrumb a {
+    color: var(--orange-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.breadcrumb a:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
+.breadcrumb li:last-child {
+    color: var(--gray-dark);
+}
+
+/* Privacy Container */
+.privacy-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+.privacy-content {
+    background: var(--white);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Privacy Header */
+.privacy-header {
+    margin-bottom: var(--spacing-xl);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--orange-primary);
+}
+
+.privacy-header h1 {
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    color: var(--orange-primary);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+.last-updated {
+    font-size: var(--font-size-small);
+    color: var(--gray-medium);
+    font-style: italic;
+}
+
+/* Privacy Sections */
+.privacy-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.privacy-section:last-child {
+    margin-bottom: 0;
+}
+
+.privacy-section h2 {
+    font-size: clamp(22px, 4vw, 28px);
+    font-weight: 700;
+    color: var(--brown-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.3;
+}
+
+.privacy-section h3 {
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    color: var(--brown-medium);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.4;
+}
+
+.privacy-section p {
+    font-size: var(--font-size-base);
+    color: var(--gray-dark);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.8;
+}
+
+.privacy-section ul {
+    margin-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+}
+
+.privacy-section li {
+    font-size: var(--font-size-base);
+    color: var(--gray-dark);
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.8;
+}
+
+.privacy-section strong {
+    color: var(--brown-dark);
+    font-weight: 600;
+}
+
+.privacy-section a {
+    color: var(--orange-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.privacy-section a:hover {
+    color: var(--orange-dark);
+    text-decoration: underline;
+}
+
+/* Contact Info */
+.contact-info {
+    background: var(--gray-light);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--orange-primary);
+    margin: var(--spacing-md) 0;
+}
+
+.contact-info p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-info p:last-child {
+    margin-bottom: 0;
+}
+
+/* Back to Home */
+.back-to-home {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: var(--orange-primary);
+    color: var(--white);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-normal);
+}
+
+.back-button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.back-button svg {
+    transition: transform var(--transition-fast);
+}
+
+.back-button:hover svg {
+    transform: translateX(-3px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+/* Tablets (768px - 1023px) */
+@media (max-width: 1023px) {
+    :root {
+        --font-size-base: 15px;
+        --font-size-xl: 22px;
+        --font-size-2xl: 28px;
+    }
+
+    .welcome-card {
+        padding: var(--spacing-lg);
+    }
+
+    .privacy-content {
+        padding: var(--spacing-lg);
+    }
+
+    .whatsapp-text {
+        display: none;
+    }
+
+    .whatsapp-button {
+        padding: 14px;
+        width: 56px;
+        height: 56px;
+        justify-content: center;
+    }
+
+    .online-indicator {
+        display: none;
+    }
+}
+
+/* Mobile (320px - 767px) */
+@media (max-width: 767px) {
+    :root {
+        --font-size-base: 14px;
+        --font-size-small: 13px;
+        --font-size-large: 16px;
+        --font-size-xl: 20px;
+        --font-size-2xl: 24px;
+        --spacing-md: 16px;
+        --spacing-lg: 24px;
+        --spacing-xl: 32px;
+    }
+
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .welcome-card {
+        padding: var(--spacing-md) var(--spacing-sm);
+        max-width: 100%;
+    }
+
+    .education-icon {
+        width: 64px;
+        height: 64px;
+    }
+
+    .welcome-title {
+        font-size: 24px;
+    }
+
+    .welcome-text {
+        font-size: 15px;
+    }
+
+    .cta-button {
+        font-size: 16px;
+        padding: 14px 28px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .privacy-container {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .privacy-content {
+        padding: var(--spacing-md);
+        border-radius: var(--radius-sm);
+    }
+
+    .privacy-header {
+        margin-bottom: var(--spacing-lg);
+        padding-bottom: var(--spacing-md);
+    }
+
+    .privacy-section {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .privacy-section h2 {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .privacy-section h3 {
+        margin-top: var(--spacing-md);
+    }
+
+    .privacy-section ul {
+        margin-left: var(--spacing-md);
+    }
+
+    .breadcrumb {
+        padding: var(--spacing-sm);
+    }
+
+    .breadcrumb ol {
+        font-size: 12px;
+    }
+
+    .whatsapp-button {
+        bottom: 16px;
+        right: 16px;
+        padding: 12px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .whatsapp-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .back-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Chat Modal Mobile Styles */
+    .chat-modal.active {
+        padding: 0;
+        align-items: flex-end;
+    }
+
+    .chat-modal-content {
+        max-width: 100%;
+        border-radius: 20px 20px 0 0;
+        margin-bottom: 0;
+    }
+
+    .chat-modal-header {
+        padding: 16px;
+    }
+
+    .attendant-photo {
+        width: 42px;
+        height: 42px;
+    }
+
+    .attendant-info h3 {
+        font-size: 15px;
+    }
+
+    .attendant-info p {
+        font-size: 12px;
+    }
+
+    .chat-modal-body {
+        padding: 16px;
+    }
+
+    .chat-message {
+        max-width: 90%;
+    }
+
+    .chat-modal-footer {
+        padding: 16px;
+    }
+
+    .chat-button {
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+}
+
+/* Extra Small Mobile (320px - 374px) */
+@media (max-width: 374px) {
+    .welcome-title {
+        font-size: 22px;
+    }
+
+    .cta-button {
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+
+    .privacy-content {
+        padding: var(--spacing-sm);
+    }
+}
+
+/* Large Desktop (1440px+) */
+@media (min-width: 1440px) {
+    :root {
+        --font-size-base: 18px;
+        --font-size-large: 20px;
+        --font-size-xl: 28px;
+        --font-size-2xl: 36px;
+    }
+
+    .welcome-card {
+        max-width: 540px;
+        padding: var(--spacing-2xl);
+    }
+
+    .education-icon {
+        width: 96px;
+        height: 96px;
+    }
+
+    .privacy-container {
+        max-width: 1000px;
+    }
+}
+
+/* Print Styles */
+@media print {
+
+    .whatsapp-button,
+    .breadcrumb,
+    .back-to-home {
+        display: none;
+    }
+
+    .privacy-content {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    body {
+        background: white;
+    }
+
+    a {
+        color: black;
+        text-decoration: underline;
+    }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .welcome-card {
+        border: 2px solid var(--brown-dark);
+    }
+
+    .cta-button {
+        border: 2px solid var(--white);
+    }
+}
+
+/* Dark Mode Support (Optional) */
+@media (prefers-color-scheme: dark) {
+    /* Keep light theme for landing page as per design */
+    /* Privacy page could have dark mode if needed */
+}
